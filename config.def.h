@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const int startwithgaps[]    = { 1 };	/* 1 means gaps are used by default, this can be customized for each tag */
 static const unsigned int gappx[]   = { 6 };   /* default gap between windows in pixels, this can be customized for each tag */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -10,11 +10,11 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 1;        /* 0 means no focus on scrolling */
 static const char *fonts[]          = { "Terminus:size=10", "Font Awesome 5 Free Regular:style=Regular:size=12" };
 static const char dmenufont[]       = "Terminus:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
+static const char col_gray1[]       = "#0a0a14";
+static const char col_gray2[]       = "#191919";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_cyan[]        = "#444444";
 static const unsigned int baralpha = 204;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
@@ -30,7 +30,9 @@ static const unsigned int alphas[][3]      = {
 
 /* autostart */
 static const char *const autostart[] = {
-	"picom", NULL,
+	"picom", "--experimental-backends", NULL,
+	"dunst", NULL,
+	"feh", "--bg-scale", "/home/leandro/imp.jpg", NULL,
 	NULL /* terminate */
 };
 
@@ -42,9 +44,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            0,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class          instance    title       tags mask     isfloating   monitor */
+	{ "firefox",      NULL,       NULL,       1,            0,           -1 },
+	{ "qutebrowser",  NULL,       NULL,       1,            0,           -1 },
+	{ "discord",      NULL,       NULL,       2,            0,           -1 },
+	{ "Steam",        NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "Gimp",         NULL,       NULL,       1 << 4,       0,           -1 },
 };
 
 /* layout(s) */
@@ -56,13 +61,13 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 #include "gaplessgrid.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
-	{ "TTT",      bstack },
-	{ "===",      bstackhoriz },
-	{ "|+|",      tatami },
-	{ "GG ",      gaplessgrid },
+	{ "[]= ",      tile },    /* first entry is default */
+	{ "><> ",      NULL },    /* no layout function means floating behavior */
+	{ "[M] ",      monocle },
+	{ "TTT ",      bstack },
+	{ "=== ",      bstackhoriz },
+	{ "|+| ",      tatami },
+	{ "GG ",       gaplessgrid },
 };
 
 /* key definitions */
@@ -80,6 +85,14 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+
+static const char *qute[]    = { "qutebrowser", NULL};
+static const char *discord[] = { "discord", NULL};
+static const char *steam[]   = { "steam", NULL};
+static const char *pavu[]    = { "pavucontrol", NULL};
+static const char *ncmpcpp[] = { "st", "ncmpcpp", NULL};
+static const char *gimp[]    = { "gimp", NULL};
+static const char *print[]   = { "flameshot", "gui", NULL};
 
 #include "mpdcontrol.c"
 
@@ -120,6 +133,13 @@ static Key keys[] = {
 
 	{ MODKEY|ShiftMask,             XK_j,      aspectresize,   {.i = +20} },
 	{ MODKEY|ShiftMask,             XK_k,      aspectresize,   {.i = -20} },
+	{ MODKEY,                       XK_F1,     spawn,          {.v = qute } },
+	{ MODKEY,                       XK_F2,     spawn,          {.v = discord } },
+	{ MODKEY,                       XK_F3,     spawn,          {.v = steam } },
+	{ MODKEY,                       XK_F4,     spawn,          {.v = ncmpcpp } },
+	{ MODKEY,                       XK_F5,     spawn,          {.v = gimp } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = pavu } },
+	{ 0,/*n me julgue to sem print*/XK_F8,     spawn,          {.v = print } },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
