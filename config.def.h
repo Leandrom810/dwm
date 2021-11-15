@@ -8,7 +8,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 1;        /* 0 means no focus on scrolling */
-static const char *fonts[]          = { "Terminus:size=10", "Font Awesome 5 Free Regular:style=Regular:size=12" };
+static const char *fonts[]          = { "Terminus:size=10", "Font Awesome 5 Free Regular:style=Regular:size=10" };
 static const char dmenufont[]       = "Terminus:size=10";
 static const char col_gray1[]       = "#0a0a14";
 static const char col_gray2[]       = "#191919";
@@ -33,6 +33,7 @@ static const char *const autostart[] = {
 	"picom", "--experimental-backends", NULL,
 	"dunst", NULL,
 	"feh", "--bg-scale", "/home/leandro/imp.jpg", NULL,
+	"slstatus", NULL,
 	NULL /* terminate */
 };
 
