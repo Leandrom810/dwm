@@ -94,6 +94,11 @@ static const char *pavu[]    = { "pavucontrol", NULL};
 static const char *ncmpcpp[] = { "st", "ncmpcpp", NULL};
 static const char *gimp[]    = { "gimp", NULL};
 static const char *print[]   = { "flameshot", "gui", NULL};
+static const char *lf[]      = { "st", "lf", NULL};
+static const char *pcmanfm[] = { "pcmanfm", NULL};
+/* custom scripts */
+static const char *pwr[]     = { "PowerMenuDwm", NULL};
+static const char *comp[]    = { "CompositorSwitch", NULL};
 
 #include "mpdcontrol.c"
 
@@ -139,8 +144,13 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F3,     spawn,          {.v = steam } },
 	{ MODKEY,                       XK_F4,     spawn,          {.v = ncmpcpp } },
 	{ MODKEY,                       XK_F5,     spawn,          {.v = gimp } },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = pavu } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = pavu } },
 	{ 0,/*n me julgue to sem print*/XK_F8,     spawn,          {.v = print } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = lf } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = pcmanfm } },
+
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = comp } },
+	{ MODKEY,                       XK_End,    spawn,          {.v = pwr } },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
