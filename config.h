@@ -30,7 +30,7 @@ static const unsigned int alphas[][3]      = {
 
 /* autostart */
 static const char *const autostart[] = {
-	"picom", "--experimental-backends", NULL,
+	"picom", "--experimental-backends", "--vsync", NULL,
 	"dunst", NULL,
 	"feh", "--bg-scale", "/home/leandro/imp.jpg", NULL,
 	"slstatus", NULL,
