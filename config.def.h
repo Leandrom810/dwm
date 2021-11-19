@@ -10,7 +10,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 1;        /* 0 means no focus on scrolling */
 static const char *fonts[]          = { "Terminus:size=10", "Font Awesome 5 Free Regular:style=Regular:size=10" };
 static const char dmenufont[]       = "Terminus:size=10";
-static const char col_gray1[]       = "#03030f";
+static const char col_gray1[]       = "#01010d";
 static const char col_gray2[]       = "#191919";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
