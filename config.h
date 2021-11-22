@@ -10,7 +10,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 1;        /* 0 means no focus on scrolling */
 static const char *fonts[]          = { "Terminus:size=10", "Font Awesome 5 Free Regular:style=Regular:size=10" };
 static const char dmenufont[]       = "Terminus:size=10";
-static const char col_gray1[]       = "#00010a";
+static const char col_gray1[]       = "#000104";
 static const char col_gray2[]       = "#191919";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
@@ -31,7 +31,6 @@ static const unsigned int alphas[][3]      = {
 /* autostart */
 static const char *const autostart[] = {
 	"picom", "--experimental-backends", "--vsync", NULL,
-	"dunst", NULL,
 	"randomwallpaper", NULL, /* custom walllapper seter shell scriot */
 	"slstatus", NULL,
 	NULL /* terminate */
