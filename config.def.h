@@ -30,7 +30,7 @@ static const unsigned int alphas[][3]      = {
 
 /* autostart */
 static const char *const autostart[] = {
-	"picom", "--experimental-backends", "--vsync", NULL,
+	"picom", "--vsync", NULL,
 	"randomwallpaper", NULL, /* custom walllapper seter shell script */
 	"slstatus", NULL,
 	NULL /* terminate */
@@ -49,6 +49,7 @@ static const Rule rules[] = {
 	{ "qutebrowser",  NULL,       NULL,       1,            0,           -1 },
 	{ "discord",      NULL,       NULL,       2,            0,           -1 },
 	{ "Steam",        NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "steam",        NULL,       NULL,       1 << 2,       0,           -1 },
 	{ "Gimp",         NULL,       NULL,       1 << 4,       0,           -1 },
 };
 
@@ -86,6 +87,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, "-b", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+static const char *firefox[] = { "firefox", NULL};
 static const char *qute[]    = { "qutebrowser", NULL};
 static const char *discord[] = { "discord", NULL};
 static const char *steam[]   = { "steam", NULL};
@@ -136,15 +138,15 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = GAP_RESET } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = GAP_TOGGLE} },
 
-	{ MODKEY|ShiftMask,             XK_j,      aspectresize,   {.i = +20} },
-	{ MODKEY|ShiftMask,             XK_k,      aspectresize,   {.i = -20} },
-	{ MODKEY,                       XK_F1,     spawn,          {.v = qute } },
+	{ MODKEY|ShiftMask,             XK_j,      aspectresize,   {.i = +25} },
+	{ MODKEY|ShiftMask,             XK_k,      aspectresize,   {.i = -25} },
+	{ MODKEY,                       XK_F1,     spawn,          {.v = firefox } },
 	{ MODKEY,                       XK_F2,     spawn,          {.v = discord } },
 	{ MODKEY,                       XK_F3,     spawn,          {.v = steam } },
 	{ MODKEY,                       XK_F4,     spawn,          {.v = ncmpcpp } },
 	{ MODKEY,                       XK_F5,     spawn,          {.v = gimp } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = pavu } },
-	{ 0,/*n me julgue to sem print*/XK_F8,     spawn,          {.v = print } },
+	{ 0,                            XK_Print,  spawn,          {.v = print } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = lf } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = pcmanfm } },
 
